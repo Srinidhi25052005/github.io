@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Srinidhi Athmakuri | Data Scientist & Full-Stack Engineer</title>
+    
+    <!-- Google Fonts: JetBrains Mono (editorial monospace titles) & Work Sans (clean readability) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for vector iconography -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Favicon generated from student's initials SA -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234f46e5'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-size='42' fill='%23ffffff' font-weight='bold'%3ESA%3C/text%3E%3C/svg%3E">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                        sans: ['"Work Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        accent: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            900: '#312e81',
+                        },
+                        editorial: {
+                            bg: '#fafafa',
+                            ink: '#0e0e11',
+                            cardBg: '#ffffff',
+                            border: '#e4e4e7',
+                            
+                            bgDark: '#0e0e11',
+                            inkDark: '#f4f4f5',
+                            cardBgDark: '#18181b',
+                            borderDark: '#27272a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Work Sans', sans-serif;
+        }
+        h1, h2, h3, h4, .font-mono-style {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        /* Grid overlay background to resemble structural layout paper */
+        .editorial-grid {
+            background-image: linear-gradient(to right, rgba(99, 102, 241, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .dark .editorial-grid {
+            background-image: linear-gradient(to right, rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+        }
+        /* Custom scrollbars */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #4b5563;
+        }
+    </style>
+</head>
+<body class="bg-editorial-bg text-editorial-ink dark:bg-editorial-bgDark dark:text-editorial-inkDark transition-colors duration-300 antialiased overflow-x-hidden editorial-grid">
+
+    <header class="border-b-2 border-editorial-ink dark:border-editorial-inkDark sticky top-0 bg-editorial-bg/95 dark:bg-editorial-bgDark/95 backdrop-blur-md z-50 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 py-4 flex justify-between items-center">
+            <div class="flex flex-col">
+                <span class="text-[10px] uppercase tracking-widest font-bold text-accent-500 font-mono-style">PORTFOLIO EDITION v2.6</span>
+                <a href="#hero" class="text-xl md:text-2xl font-extrabold tracking-tighter uppercase font-mono-style hover:text-accent-500 transition-colors">
+                    SRINIDHI ATHMAKURI
+                </a>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8 text-xs font-semibold uppercase tracking-wider font-mono-style">
+                <a href="#about" class="hover:text-accent-500 transition-colors">About</a>
+                <a href="#experience" class="hover:text-accent-500 transition-colors">Experience</a>
+                <a href="#projects" class="hover:text-accent-500 transition-colors">Projects</a>
+                <a href="#skills" class="hover:text-accent-500 transition-colors">Competencies</a>
+                <a href="#education" class="hover:text-accent-500 transition-colors">Credentials</a>
+                <a href="#contact" class="hover:text-accent-500 transition-colors">Contact</a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <!-- Theme Controller Toggle -->
+                <button id="theme-toggle" class="p-2 border border-editorial-border dark:border-editorial-borderDark rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors" aria-label="Toggle Theme">
+                    <i id="theme-icon" class="fa-solid fa-moon text-md text-zinc-600 dark:text-zinc-300"></i>
+                </button>
+                <a href="#contact" class="hidden sm:inline-block border-2 border-editorial-ink dark:border-editorial-inkDark px-4 py-2 text-xs uppercase font-bold tracking-wider hover:bg-editorial-ink hover:text-editorial-bg dark:hover:bg-editorial-inkDark dark:hover:text-editorial-bgDark transition-all duration-300">
+                    Reach Out
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 md:px-8 py-8 md:py-16 space-y-24">
+
+        <section id="hero" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch pt-4">
+            
+            <!-- Left Side: Editorial Typography & Quote -->
+            <div class="lg:col-span-8 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-editorial-border dark:border-editorial-borderDark pb-8 lg:pb-0 lg:pr-8">
+                <div>
+                    <div class="inline-flex items-center space-x-2 border border-accent-500 text-accent-500 text-[10px] uppercase font-bold tracking-widest px-3 py-1 mb-6 rounded-full font-mono-style">
+                        <span class="w-2 h-2 rounded-full bg-accent-500 animate-pulse"></span>
+                        <span>Open to Engineering & Data Internships</span>
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tighter uppercase leading-none mb-6">
+                        Srinidhi <br class="hidden sm:inline">
+                        <span class="text-accent-500 underline decoration-accent-500/30">Athmakuri</span>
+                    </h1>
+                    
+                    <p class="text-lg md:text-xl font-medium text-zinc-600 dark:text-zinc-400 font-mono-style tracking-tight mb-8">
+                        Computer Science Undergraduate & Full-Stack Developer Specializing in Data Science
+                    </p>
+                </div>
+
+                <!-- Custom Quote Grid Highlight -->
+                <div id="about" class="border-t-4 border-accent-500 pt-6 mt-4">
+                    <p class="text-lg md:text-xl font-light leading-relaxed italic text-zinc-800 dark:text-zinc-200">
+                        "I explore computational solutions that bridge robust backend system architectures with high-density dataset workflows. Harnessing React, Node.js, and Power BI dashboards, I create structured digital tools designed to clarify deep scientific concepts."
+                    </p>
+                    <div class="mt-4 flex items-center justify-between text-xs tracking-widest uppercase font-bold font-mono-style text-zinc-500">
+                        <span>DATA ANALYTICS & FULL STACK</span>
+                        <span>HYDERABAD, IN</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Typographic System Directory Panel -->
+            <div class="lg:col-span-4 flex flex-col justify-between lg:pl-6 space-y-6">
+                <div class="border-2 border-editorial-ink dark:border-editorial-inkDark p-6 bg-editorial-cardBg dark:bg-editorial-cardBgDark rounded-lg shadow-[-8px_8px_0px_0px_rgba(99,102,241,1)] dark:shadow-[-8px_8px_0px_0px_rgba(99,102,241,0.5)] h-full flex flex-col justify-between">
+                    <div>
+                        <div class="border-b-2 border-editorial-ink dark:border-editorial-inkDark pb-3 mb-4">
+                            <span class="text-[10px] uppercase tracking-widest font-bold text-accent-500 font-mono-style">PROFILE DIRECTORY</span>
+                            <h3 class="text-lg font-bold font-mono-style uppercase tracking-tight">Focus & Objectives</h3>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <span class="text-[10px] uppercase font-bold text-zinc-400 dark:text-zinc-500 block font-mono-style">Primary Mandates</span>
+                                <p class="text-sm font-semibold">Full-Stack Development, Data Engineering, Dashboard Analytics</p>
+                            </div>
+                            <div>
+                                <span class="text-[10px] uppercase font-bold text-zinc-400 dark:text-zinc-500 block font-mono-style">Key Frameworks</span>
+                                <p class="text-sm font-mono-style">MERN Stack, React.js, Node.js, RESTful Architectures</p>
+                            </div>
+                            <div>
+                                <span class="text-[10px] uppercase font-bold text-zinc-400 dark:text-zinc-500 block font-mono-style">Operational Target</span>
+                                <p class="text-sm font-semibold">Immediate Technical Collaborations & Internship Placements</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-dashed border-editorial-border dark:border-editorial-borderDark pt-4 mt-6 text-xs text-zinc-500 font-mono-style flex justify-between items-center">
+                        <span>INDEX REF: ENG-DS</span>
+                        <span class="text-accent-500 font-bold">● ACTIVE</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="border-y-2 border-editorial-ink dark:border-editorial-inkDark py-6 bg-accent-50 dark:bg-zinc-950/40 grid grid-cols-2 md:grid-cols-5 gap-4 items-center justify-center transition-colors">
+            <div class="text-center px-2">
+                <span class="block text-2xl font-bold tracking-tight text-accent-500 font-mono-style">8.6</span>
+                <span class="text-[10px] uppercase tracking-wider text-zinc-500 dark:text-zinc-400 font-bold">B.Tech CGPA</span>
+            </div>
+            <div class="text-center px-2 border-l border-editorial-border dark:border-editorial-borderDark">
+                <span class="block text-2xl font-bold tracking-tight text-accent-500 font-mono-style">9.8</span>
+                <span class="text-[10px] uppercase tracking-wider text-zinc-500 dark:text-zinc-400 font-bold">Diploma CGPA</span>
+            </div>
+            <!-- Interactive Coding registries mapped directly to real URLs -->
+            <div class="text-center px-2 col-span-2 md:col-span-3 border-t md:border-t-0 md:border-l border-editorial-border dark:border-editorial-borderDark pt-4 md:pt-0">
+                <span class="block text-[10px] uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-2 font-bold font-mono-style">VERIFIED COMPUTATION LOGS</span>
+                <div class="flex justify-center flex-wrap gap-2">
+                    <a href="https://github.com/Srinidhi25052005" target="_blank" rel="noopener noreferrer" class="py-1 px-3 bg-editorial-cardBg dark:bg-editorial-cardBgDark rounded border border-editorial-border dark:border-editorial-borderDark hover:border-accent-500 hover:text-accent-500 transition-all text-xs flex items-center gap-1.5" title="GitHub">
+                        <i class="fa-brands fa-github text-slate-800 dark:text-slate-200"></i> <span class="font-mono-style text-[10px] font-bold">GitHub</span>
+                    </a>
+                    <a href="https://leetcode.com/u/srinidhiathmakuri25/" target="_blank" rel="noopener noreferrer" class="py-1 px-3 bg-editorial-cardBg dark:bg-editorial-cardBgDark rounded border border-editorial-border dark:border-editorial-borderDark hover:border-accent-500 hover:text-accent-500 transition-all text-xs flex items-center gap-1.5" title="LeetCode">
+                        <i class="fa-solid fa-square-poll-vertical text-orange-500"></i> <span class="font-mono-style text-[10px] font-bold">LeetCode</span>
+                    </a>
+                    <a href="https://codeforces.com/profile/Srinidhiathmakuri25" target="_blank" rel="noopener noreferrer" class="py-1 px-3 bg-editorial-cardBg dark:bg-editorial-cardBgDark rounded border border-editorial-border dark:border-editorial-borderDark hover:border-accent-500 hover:text-accent-500 transition-all text-xs flex items-center gap-1.5" title="Codeforces">
+                        <i class="fa-solid fa-chart-line text-blue-500"></i> <span class="font-mono-style text-[10px] font-bold">Codeforces</span>
+                    </a>
+                    <a href="https://www.codechef.com/users/sri_nidhi_25" target="_blank" rel="noopener noreferrer" class="py-1 px-3 bg-editorial-cardBg dark:bg-editorial-cardBgDark rounded border border-editorial-border dark:border-editorial-borderDark hover:border-accent-500 hover:text-accent-500 transition-all text-xs flex items-center gap-1.5" title="CodeChef">
+                        <i class="fa-solid fa-mug-hot text-yellow-600"></i> <span class="font-mono-style text-[10px] font-bold">CodeChef</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-6">
+            
+            <!-- Left Panel: Professional Chronicle (6 cols) -->
+            <div id="experience" class="lg:col-span-6 border-b lg:border-b-0 lg:border-r border-editorial-border dark:border-editorial-borderDark pb-8 lg:pb-0 lg:pr-8">
+                <div class="flex items-center space-x-3 mb-8">
+                    <span class="text-3xl font-extrabold text-accent-500 font-mono-style">01 /</span>
+                    <h2 class="text-2xl font-bold uppercase tracking-tight font-mono-style">Chronicles</h2>
+                </div>
+                
+                <div class="space-y-8">
+                    <div class="relative pl-6 border-l-2 border-accent-500">
+                        <div class="absolute w-4 h-4 rounded-full bg-accent-500 -left-[9px] top-1 border-4 border-editorial-bg dark:border-editorial-bgDark"></div>
+                        <div class="flex justify-between items-start flex-wrap gap-2 mb-2">
+                            <div>
+                                <h3 class="text-lg font-bold text-zinc-900 dark:text-zinc-100">Data Science Intern</h3>
+                                <p class="text-xs font-mono-style text-accent-500">HBIC Solutions</p>
+                            </div>
+                            <span class="text-[10px] font-mono-style bg-zinc-200 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 px-2 py-1 font-bold">May 2025 - June 2025</span>
+                        </div>
+                        <ul class="text-sm text-zinc-600 dark:text-zinc-400 space-y-2 list-disc list-inside">
+                            <li>Cleaned and pre-processed dense industrial datasets using Python scripts, enhancing absolute database clarity.</li>
+                            <li>Engineered highly graphical, interactive Power BI layouts allowing swift key indicator tracking by target leadership.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Selective Accomplishments Deck -->
+                <div class="mt-12 bg-zinc-100 dark:bg-zinc-900/50 p-6 border-l-4 border-editorial-ink dark:border-editorial-inkDark transition-colors">
+                    <h4 class="text-xs font-bold uppercase tracking-widest mb-4 font-mono-style text-accent-500">Noteworthy Recognitions</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start space-x-3">
+                            <i class="fa-solid fa-award text-accent-500 mt-1"></i>
+                            <div>
+                                <p class="text-sm font-bold">Microsoft Basha Bandhu Hackathon</p>
+                                <p class="text-xs text-zinc-500 dark:text-zinc-400">Selected participant, displaying rapid prototyping capabilities and system mapping under high pressure constraints.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i class="fa-solid fa-graduation-cap text-accent-500 mt-1"></i>
+                            <div>
+                                <p class="text-sm font-bold">SmartInterviews SmartCode Program</p>
+                                <p class="text-xs text-zinc-500 dark:text-zinc-400">Ongoing curriculum honing systematic performance diagnostics and scalable algorithms.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="education" class="lg:col-span-6 lg:pl-6">
+                <div class="flex items-center space-x-3 mb-8">
+                    <span class="text-3xl font-extrabold text-accent-500 font-mono-style">02 /</span>
+                    <h2 class="text-2xl font-bold uppercase tracking-tight font-mono-style">Academia</h2>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- College B.Tech Block -->
+                    <div class="border border-editorial-border dark:border-editorial-borderDark p-6 bg-editorial-cardBg dark:bg-editorial-cardBgDark rounded-lg shadow-sm hover:border-accent-500 transition-colors duration-300 relative group">
+                        <span class="absolute -top-3 right-4 text-[10px] font-mono-style bg-accent-500 text-white font-bold px-2 py-0.5 rounded">8.6 CGPA</span>
+                        <div class="mb-4">
+                            <span class="text-[10px] uppercase font-bold text-accent-500 font-mono-style">B.Tech Specialization</span>
+                            <h3 class="text-lg font-bold group-hover:text-accent-500 transition-colors">Computer Science & Engineering (Data Science)</h3>
+                            <p class="text-xs text-zinc-400 font-mono-style">Geethanjali College of Engineering and Technology</p>
+                        </div>
+                        <div class="border-t border-dashed border-editorial-border dark:border-editorial-borderDark pt-4 flex justify-between text-xs text-zinc-500 font-mono-style">
+                            <span>Hyderabad, Telangana</span>
+                            <span>June 2024 - Present</span>
+                        </div>
+                    </div>
+
+                    <!-- Diploma Block -->
+                    <div class="border border-editorial-border dark:border-editorial-borderDark p-6 bg-editorial-cardBg dark:bg-editorial-cardBgDark rounded-lg shadow-sm hover:border-accent-500 transition-colors duration-300 relative group">
+                        <span class="absolute -top-3 right-4 text-[10px] font-mono-style bg-zinc-500 text-white font-bold px-2 py-0.5 rounded">9.8 CGPA</span>
+                        <div class="mb-4">
+                            <span class="text-[10px] uppercase font-bold text-accent-500 font-mono-style">Engineering Diploma</span>
+                            <h3 class="text-lg font-bold group-hover:text-accent-500 transition-colors">Computer Science Engineering</h3>
+                            <p class="text-xs text-zinc-400 font-mono-style">Jyothishmathi Institute of Technology and Science</p>
+                        </div>
+                        <div class="border-t border-dashed border-editorial-border dark:border-editorial-borderDark pt-4 flex justify-between text-xs text-zinc-500 font-mono-style">
+                            <span>Karimnagar, Telangana</span>
+                            <span>Aug 2021 - May 2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="projects" class="border-t-2 border-editorial-ink dark:border-editorial-inkDark pt-16">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10">
+                <div class="flex items-center space-x-3">
+                    <span class="text-3xl font-extrabold text-accent-500 font-mono-style">03 /</span>
+                    <h2 class="text-3xl font-bold uppercase tracking-tight font-mono-style">Selected Work</h2>
+                </div>
+                <p class="text-xs font-mono-style text-zinc-400 uppercase tracking-widest mt-2 md:mt-0">
+                    INTERACTIVE WEB PLATFORMS
+                </p>
+            </div>
+
+            <!-- Main Project Display (Science Verse) -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 border-2 border-editorial-ink dark:border-editorial-inkDark rounded-xl overflow-hidden bg-editorial-cardBg dark:bg-editorial-cardBgDark transition-colors">
+                
+                <!-- Project Visual Grid Anchor -->
+                <div class="lg:col-span-5 bg-gradient-to-br from-indigo-900 via-indigo-950 to-slate-900 p-8 flex flex-col justify-between text-white relative overflow-hidden min-h-[320px]">
+                    <div class="absolute inset-0 opacity-10 font-mono-style text-[15rem] leading-none select-none pointer-events-none -left-20 -bottom-20">SV</div>
+                    
+                    <div class="relative z-10">
+                        <span class="text-[10px] font-mono-style uppercase tracking-widest text-indigo-300">Featured Application</span>
+                        <h3 class="text-4xl font-extrabold tracking-tighter uppercase mt-2 mb-4">Science <br>Verse</h3>
+                        <p class="text-sm text-indigo-100 max-w-sm">
+                            A highly gamified, story-driven e-learning tool developed to simplify complex math and scientific paradigms for young minds.
+                        </p>
+                    </div>
+
+                    <div class="relative z-10 flex flex-wrap gap-2 mt-6">
+                        <span class="text-xs bg-white/10 px-3 py-1 font-mono-style rounded-full border border-white/20">MERN Stack</span>
+                        <span class="text-xs bg-white/10 px-3 py-1 font-mono-style rounded-full border border-white/20">JWT</span>
+                        <span class="text-xs bg-white/10 px-3 py-1 font-mono-style rounded-full border border-white/20">MongoDB</span>
+                        <span class="text-xs bg-white/10 px-3 py-1 font-mono-style rounded-full border border-white/20">Node.js</span>
+                    </div>
+                </div>
+
+                <!-- Technical Specs and Troubleshooting -->
+                <div class="lg:col-span-7 p-8 md:p-12 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center pb-4 border-b border-editorial-border dark:border-editorial-borderDark mb-6">
+                            <span class="text-xs uppercase font-bold font-mono-style text-accent-500">Architectural Log</span>
+                            <span class="text-xs font-mono-style text-zinc-400">SYSTEM STACK</span>
+                        </div>
+                        
+                        <p class="text-sm md:text-base text-zinc-700 dark:text-zinc-300 leading-relaxed mb-6">
+                            Constructed complete REST APIs facilitating user session validation, progressive storyline checkpoints, interactive scientific quizzes, and customizable checkpoints, deploying robust database frameworks using structured MongoDB collection designs.
+                        </p>
+
+                        <!-- Troubleshooting Recognition Badge -->
+                        <div class="p-4 bg-zinc-50 dark:bg-zinc-900 border border-editorial-border dark:border-editorial-borderDark rounded-md mb-6 transition-colors">
+                            <div class="flex items-center space-x-2 text-accent-500 font-bold text-xs font-mono-style mb-2">
+                                <i class="fa-solid fa-wrench"></i>
+                                <span>ENVIRONMENT DIAGNOSIS LOG</span>
+                            </div>
+                            <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                                Self-resolved deep system PATH corruption during standard local database setup to immediately retrieve system reliability and maintain pipeline release speed.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Repository Anchor Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <a href="https://github.com/Srinidhi25052005" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-editorial-ink text-editorial-bg dark:bg-editorial-inkDark dark:text-editorial-bgDark py-3 uppercase text-xs font-bold font-mono-style tracking-wider hover:bg-accent-500 hover:text-white transition-colors">
+                            <i class="fa-brands fa-github mr-2"></i> Inspect Repository Code
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="skills" class="border-t-2 border-editorial-ink dark:border-editorial-inkDark pt-16">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10">
+                <div class="flex items-center space-x-3">
+                    <span class="text-3xl font-extrabold text-accent-500 font-mono-style">04 /</span>
+                    <h2 class="text-3xl font-bold uppercase tracking-tight font-mono-style">Competencies</h2>
+                </div>
+                <p class="text-xs font-mono-style text-zinc-400 uppercase tracking-widest mt-2 md:mt-0">
+                    INTERACTIVE ARCHITECTURE DECK
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <!-- Left Column: Modern Category Blocks (7 cols) -->
+                <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    
+                    <!-- Language Systems -->
+                    <div class="border border-editorial-border dark:border-editorial-borderDark bg-editorial-cardBg dark:bg-editorial-cardBgDark p-5 rounded-lg hover:border-accent-500 transition-colors">
+                        <div class="flex justify-between items-center border-b border-editorial-border dark:border-editorial-borderDark pb-2 mb-3">
+                            <span class="text-xs font-bold font-mono-style uppercase tracking-wider text-accent-500">Core Syntaxes</span>
+                            <i class="fa-solid fa-code text-zinc-400"></i>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="bg-zinc-100 dark:bg-zinc-800 text-xs px-2.5 py-1 rounded font-mono-style">Java</span>
+                            <span class="bg-zinc-100 dark:bg-zinc-800 text-xs px-2.5 py-1 rounded font-mono-style">C Programming</span>
+                            <span class="bg-zinc-100 dark:bg-zinc-800 text-xs px-2.5 py-1 rounded font-mono-style">JavaScript</span>
+                        </div>
+                    </div>
+
+                    <!-- Web Tech -->
+                    <div class="border border-editorial-border dark:border-editorial-borderDark bg-editorial-cardBg dark:bg-editorial-cardBgDark p-5 rounded-lg hover:border-accent-500 transition-colors">
+                        <div class="flex justify-between items-center border-b border-editorial-border dark:border-editorial-borderDark pb-2 mb-3">
+                            <span class="text-xs font-bold font-mono-style uppercase tracking-wider text-accent-500">MERN Stack Ecosystem</span>
+                            <i class="fa-solid fa-layer-group text-zinc-400"></i>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="bg-zinc-100 dark:bg-zinc-800 text-xs px-2.5 py-1 rounded font-mono-style">MongoDB</span>
+                            <span class="bg-zinc-100 dark:bg-zinc-800 text-xs px-2.5 py-1 rounded font-mono-style">ExpressJS</span>
+                            <span class="bg-zinc-100 dark:bg-zinc-800 text-xs px-2.5 py-1 rounded font-mono-style">ReactJS</span>
+                            <span class="bg-zinc-100 dark:bg-zinc-800 text-xs px-2.5 py-1 rounded font-mono-style">NodeJS</span>
+                            <span class="bg-zinc-100 dark:bg-zinc-800 text-xs px-2.5 py-1 rounded font-mono-style">JWT</span>
+                        </div>
+                    </div>
+
+                    <!-- Science & Theory -->
+                    <div class="border border-editorial-border dark:border-editorial-borderDark bg-editorial-cardBg dark:bg-editorial-cardBgDark p-5 rounded-lg hover:border-accent-500 transition-colors">
+                        <div class="flex justify-between items-center border-b border-editorial-border dark:border-editorial-borderDark pb-2 mb-3">
+                            <span class="text-xs font-bold font-mono-style uppercase tracking-wider text-accent-500">CS Infrastructures</span>
+                            <i class="fa-solid fa-shapes text-zinc-400"></i>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="bg-zinc-100 dark:bg-zinc-800 text-xs px-2.5 py-1 rounded font-mono-style">OOP</span>
+                            <span class="bg-zinc-100 dark:bg-zinc-800 text-xs px-2.5 py-1 rounded font-mono-style">DBMS</span>
+                            <span class="bg-zinc-100 dark:bg-zinc-800 text-xs px-2.5 py-1 rounded font-mono-style">Operating Systems</span>
+                            <span class="bg-zinc-100 dark:bg-zinc-800 text-xs px-2.5 py-1 rounded font-mono-style">Networks</span>
+                            <span class="bg-zinc-100 dark:bg-zinc-800 text-xs px-2.5 py-1 rounded font-mono-style">DSA</span>
+                        </div>
+                    </div>
+
+                    <!-- Analytics Tools -->
+                    <div class="border border-editorial-border dark:border-editorial-borderDark bg-editorial-cardBg dark:bg-editorial-cardBgDark p-5 rounded-lg hover:border-accent-500 transition-colors">
+                        <div class="flex justify-between items-center border-b border-editorial-border dark:border-editorial-borderDark pb-2 mb-3">
+                            <span class="text-xs font-bold font-mono-style uppercase tracking-wider text-accent-500">Analytics & Toolsets</span>
+                            <i class="fa-solid fa-chart-bar text-zinc-400"></i>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="bg-zinc-100 dark:bg-zinc-800 text-xs px-2.5 py-1 rounded font-mono-style">Power BI</span>
+                            <span class="bg-zinc-100 dark:bg-zinc-800 text-xs px-2.5 py-1 rounded font-mono-style">Git</span>
+                            <span class="bg-zinc-100 dark:bg-zinc-800 text-xs px-2.5 py-1 rounded font-mono-style">GitHub</span>
+                            <span class="bg-zinc-100 dark:bg-zinc-800 text-xs px-2.5 py-1 rounded font-mono-style">REST APIs</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Column: Interactive Skills Diagram / Visual Analytics Simulator (5 cols) -->
+                <div class="lg:col-span-5 border border-editorial-border dark:border-editorial-borderDark p-6 rounded-lg bg-editorial-cardBg dark:bg-editorial-cardBgDark flex flex-col justify-between transition-colors">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-accent-500 font-mono-style block mb-2">Scientific Index Matrix</span>
+                        <p class="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed mb-6">
+                            Interact with the visual chart bars below to inspect calculated proficiency domains based on academic assessments.
+                        </p>
+
+                        <!-- Dynamic Visual Bars -->
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between text-xs font-mono-style mb-1">
+                                    <span>Core Object Oriented Paradigms</span>
+                                    <span class="font-bold text-accent-500">95%</span>
+                                </div>
+                                <div class="h-2 bg-zinc-100 dark:bg-zinc-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-accent-500 rounded-full" style="width: 95%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-mono-style mb-1">
+                                    <span>Database Architecture & DBMS</span>
+                                    <span class="font-bold text-accent-500">90%</span>
+                                </div>
+                                <div class="h-2 bg-zinc-100 dark:bg-zinc-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-accent-500 rounded-full" style="width: 90%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-mono-style mb-1">
+                                    <span>Analytical Dashboarding & Power BI</span>
+                                    <span class="font-bold text-accent-500">85%</span>
+                                </div>
+                                <div class="h-2 bg-zinc-100 dark:bg-zinc-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-accent-500 rounded-full" style="width: 85%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-mono-style mb-1">
+                                    <span>Full Stack Web Development</span>
+                                    <span class="font-bold text-accent-500">80%</span>
+                                </div>
+                                <div class="h-2 bg-zinc-100 dark:bg-zinc-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-accent-500 rounded-full" style="width: 80%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-editorial-border dark:border-editorial-borderDark pt-4 mt-6 text-center text-[10px] text-zinc-400 font-mono-style">
+                        MEASURED FROM ACADEMIC CGPA MATRIX LOGS
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="contact" class="border-t-2 border-editorial-ink dark:border-editorial-inkDark pt-16">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                <!-- Left Hand Text Spanning -->
+                <div class="lg:col-span-8 space-y-4">
+                    <span class="text-xs font-mono-style uppercase tracking-widest text-accent-500 font-bold">READY TO DEPLOY INITIATIVES?</span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tighter uppercase leading-none font-mono-style">
+                        Initiate a Collaborative Connection.
+                    </h2>
+                    <p class="text-sm md:text-base text-zinc-500 dark:text-zinc-400 max-w-xl leading-relaxed">
+                        Currently reviewing internships and technical roles in software engineering, database design, and technical data analysis. Use the mailbox link to communicate directly.
+                    </p>
+                </div>
+
+                <!-- Right Hand Call To Action Box -->
+                <div class="lg:col-span-4 border-2 border-editorial-ink dark:border-editorial-inkDark p-6 rounded-xl bg-editorial-cardBg dark:bg-editorial-cardBgDark shadow-[-6px_6px_0px_0px_rgba(99,102,241,1)] transition-colors">
+                    <span class="block text-xs uppercase font-bold font-mono-style text-zinc-400 dark:text-zinc-500 mb-2">Secured Connection Mailbox</span>
+                    
+                    <a href="mailto:srinidhiathmakuri25@gmail.com" class="block text-center w-full bg-accent-500 hover:bg-accent-600 text-white font-mono-style py-3 uppercase text-xs font-bold tracking-wider rounded transition-all mb-4">
+                        <i class="fa-solid fa-envelope mr-2"></i> Mail Direct Inquiry
+                    </a>
+                    
+                    <div class="text-center font-mono-style text-xs">
+                        <span class="text-zinc-500">Phone Network: </span>
+                        <a href="tel:+916281026431" class="font-bold underline text-editorial-ink dark:text-editorial-inkDark">+91 6281026431</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t-2 border-editorial-ink dark:border-editorial-borderDark bg-zinc-100 dark:bg-zinc-950/80 transition-colors py-12 mt-20">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between items-center text-xs text-zinc-500 space-y-6 md:space-y-0">
+            <div class="text-center md:text-left">
+                <span class="block font-bold text-editorial-ink dark:text-editorial-inkDark uppercase font-mono-style">SRINIDHI ATHMAKURI</span>
+                <span class="block mt-1">Specialized Academic Portfolio &copy; 2026</span>
+            </div>
+
+            <!-- Social Links Grid -->
+            <div class="flex space-x-6 text-lg">
+                <a href="https://www.linkedin.com/in/srinidhi-athmakuri" target="_blank" rel="noopener noreferrer" class="hover:text-accent-500 transition-colors text-zinc-700 dark:text-zinc-300" title="LinkedIn">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/Srinidhi25052005" target="_blank" rel="noopener noreferrer" class="hover:text-accent-500 transition-colors text-zinc-700 dark:text-zinc-300" title="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="mailto:srinidhiathmakuri25@gmail.com" class="hover:text-accent-500 transition-colors text-zinc-700 dark:text-zinc-300" title="Email">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+            </div>
+
+            <div class="text-center md:text-right font-mono-style">
+                <span>Optimized Portfolio Edition. Built as a single-page asset.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom Interaction Scripting -->
+    <script>
+        // Dark / Light Theme Toggle Management
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+
+        // Check local storage or standard match preferences
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeIcon.className = "fa-solid fa-sun text-md text-amber-400";
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeIcon.className = "fa-solid fa-moon text-md text-zinc-600";
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+                themeIcon.className = "fa-solid fa-moon text-md text-zinc-600";
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+                themeIcon.className = "fa-solid fa-sun text-md text-amber-400";
+            }
+        });
+
+        // Setup clean intersection transitions for scrolling effects
+        const viewportOptions = {
+            threshold: 0.15
+        };
+
+        const appearanceObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-6');
+                }
+            });
+        }, viewportOptions);
+
+        // Map animations over major page columns
+        const transitionSections = document.querySelectorAll('#about, #experience, #education, #projects, #skills, #contact');
+        transitionSections.forEach(section => {
+            section.classList.add('transition-all', 'duration-700', 'transform', 'opacity-0', 'translate-y-6');
+            appearanceObserver.observe(section);
+        });
+    </script>
+</body>
+</html>
